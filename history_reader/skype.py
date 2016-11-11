@@ -1,6 +1,17 @@
 import sqlite3
 import datetime
 
+from pprint import pprint
+
+MSG_TYPES = {
+    # 'CREATE': 10,
+    'RENAME': 2,
+    'MESSAGE': 61,
+    'FEELING': 60,
+    'IMAGE': 201,
+    'LEAVE': 13,
+}
+
 
 class History:
 

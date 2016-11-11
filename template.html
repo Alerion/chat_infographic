@@ -15,10 +15,14 @@
   <body>
     <div class="container">
         {% for msg in messages %}
-        <div class="alert alert-success" role="alert">
-          <strong>{{ msg.author }} {{ msg.created }}</strong> <span class="badge">{{ msg.type }}</span><br>
-          {{ msg.body_xml }}
-        </div>
+          {% if msg.type in MSG_TYPES.values() %}
+          <div class="alert {% if msg.type == MSG_TYPES.MESSAGE %}alert-success{% else %}alert-warning{% endif %}" role="alert">
+            <strong>{{ msg.from_dispname }} {{ msg.created }}</strong>
+            {% if msg.type != MSG_TYPES.MESSAGE %}<span class="badge">{{ msg.type }}</span>{% endif %}
+            <br>
+            {{ msg.body_xml }}
+          </div>
+          {% endif %}
         {% endfor %}
     </div>
 

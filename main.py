@@ -3,7 +3,7 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 
-from history_reader.skype import History
+from history_reader.skype import History, MSG_TYPES
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -22,6 +22,7 @@ def render(messages):
     with open('index.html', 'w') as output:
         context = {
             'messages': messages,
+            'MSG_TYPES': MSG_TYPES
         }
         output.write(template.render(**context))
 
